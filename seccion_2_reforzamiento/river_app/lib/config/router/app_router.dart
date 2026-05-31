@@ -7,6 +7,11 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) => HomeScreen(),
+    ),
+
+    GoRoute(
+      path: '/state-provider',
+      builder: (context, state) => StateProviderScreen(),
     )
   ]
 );
