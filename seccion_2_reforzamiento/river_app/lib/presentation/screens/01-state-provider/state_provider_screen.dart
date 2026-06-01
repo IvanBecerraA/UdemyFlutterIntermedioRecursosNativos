@@ -24,7 +24,15 @@ class StateProviderScreen extends ConsumerWidget {
 
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.refresh_rounded),
-        onPressed: () {}
+        onPressed: () {
+
+          ref.invalidate(randomNamesProvider);
+          // ref.read(randomNamesProvider.notifier).update(
+          //   (state) => state.toLowerCase()
+          // );
+
+
+        }
       ),
 
     );
