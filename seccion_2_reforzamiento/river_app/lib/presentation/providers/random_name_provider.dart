@@ -3,7 +3,7 @@ import 'package:river_app/config/config.dart';
 
 
 
-final randomNamesProvider = StateProvider<String>((ref) {
-  print('randomName Provider');
+final randomNamesProvider = StateProvider.autoDispose<String>((ref) {
+  // print('randomName Provider');
   return RandomGenerator.getRandomName();
 });
