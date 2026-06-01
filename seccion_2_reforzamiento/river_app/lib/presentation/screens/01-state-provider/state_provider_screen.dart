@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:river_app/presentation/providers/providers.dart';
 
 
 
-class StateProviderScreen extends StatelessWidget {
+class StateProviderScreen extends ConsumerWidget {
   const StateProviderScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
 
     final titleStyle = Theme.of(context).textTheme.titleMedium;
+    final name = ref.watch(randomNamesProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -16,7 +19,7 @@ class StateProviderScreen extends StatelessWidget {
       ),
 
       body: Center(
-        child: Text('Iván Becerra', style: titleStyle),
+        child: Text(name, style: titleStyle),
       ),
 
       floatingActionButton: FloatingActionButton(
