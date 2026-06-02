@@ -1,20 +1,35 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:river_app/config/config.dart';
 
 
 
-final namesStreamProvider = StreamProvider<List<String>>((ref) async* {
-  await Future.delayed(const Duration(seconds: 2));
-  
-  yield [];
-  await Future.delayed(const Duration(seconds: 2));
+final namesStreamProvider = StreamProvider.autoDispose<String>((ref) async* {  
 
-  yield ['Sophia'];
-  await Future.delayed(const Duration(seconds: 2));
-
-  yield ['Sophia', 'Amelia'];
-  await Future.delayed(const Duration(seconds: 2));
-
-  yield ['Sophia', 'Amelia', 'Iván'];
-
+  await for(final name in RandomGenerator.randomNamesStream()) {
+    yield name;
+  }
 
 });
+
+
+
+
+
+
+
+// final namesStreamProvider = StreamProvider<List<String>>((ref) async* {
+//   await Future.delayed(const Duration(seconds: 2));
+  
+//   yield [];
+//   await Future.delayed(const Duration(seconds: 2));
+
+//   yield ['Sophia'];
+//   await Future.delayed(const Duration(seconds: 2));
+
+//   yield ['Sophia', 'Amelia'];
+//   await Future.delayed(const Duration(seconds: 2));
+
+//   yield ['Sophia', 'Amelia', 'Iván'];
+
+
+// });
