@@ -23,5 +23,10 @@ final appRouter = GoRouter(
       path: '/stream-provider',
       builder: (context, state) => StreamScreen(),
     ),
+
+    GoRoute(
+      path: '/state-notifier-provider',
+      builder: (context, state) => TodosScreen(),
+    ),
   ]
 );
