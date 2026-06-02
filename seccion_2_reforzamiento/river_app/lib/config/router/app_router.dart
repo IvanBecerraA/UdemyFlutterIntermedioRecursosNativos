@@ -18,5 +18,10 @@ final appRouter = GoRouter(
       path: '/future-provider',
       builder: (context, state) => PokemonScreen(),
     ),
+
+    GoRoute(
+      path: '/stream-provider',
+      builder: (context, state) => StreamScreen(),
+    ),
   ]
 );
