@@ -11,7 +11,8 @@ class PokemonScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     final pokemonId = ref.watch(pokemonIdProvider);
-    final pokemonAsync = ref.watch(pokemonNameProvider(pokemonId));
+    final pokemonAsync = ref.watch(pokemonNameProvider);
+    // final pokemonAsync = ref.watch(pokemonNameProvider(pokemonId));
 
     return Scaffold(
       appBar: AppBar(
