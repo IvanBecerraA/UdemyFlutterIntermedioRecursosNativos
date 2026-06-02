@@ -12,6 +12,11 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/state-provider',
       builder: (context, state) => StateProviderScreen(),
-    )
+    ),
+
+    GoRoute(
+      path: '/future-provider',
+      builder: (context, state) => PokemonScreen(),
+    ),
   ]
 );
