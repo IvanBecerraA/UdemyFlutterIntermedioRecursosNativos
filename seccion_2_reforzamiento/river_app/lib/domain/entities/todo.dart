@@ -11,7 +11,7 @@ class Todo {
   });
 
   bool get done {
-    return completedAt == null;
+    return completedAt != null;
   }
 
   Todo copyWith({

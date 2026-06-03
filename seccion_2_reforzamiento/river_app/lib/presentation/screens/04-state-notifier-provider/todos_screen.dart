@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:river_app/presentation/providers/providers.dart';
 
 
 class TodosScreen extends ConsumerWidget {
@@ -29,14 +30,17 @@ class _TodosView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref ) {
 
+    final todos = ref.watch(todosProvider);
+
     return ListView.builder(
-      itemCount: 10,
+      itemCount: todos.length,
       itemBuilder: (context, index) {
         
+        final todo = todos[index];
 
         return SwitchListTile(
-          title: const Text( 'Juan Carlos' ),
-          value: (index % 2 == 0), // True o False 
+          title: Text(todo.description),
+          value: todo.done, // True o False 
           onChanged: ( value ) {
             
           }
