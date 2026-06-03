@@ -16,7 +16,7 @@ class TodosScreen extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon( Icons.add ),
         onPressed: () {
-          
+          ref.read(todosProvider.notifier).addTodo();
         },
       ),
     );
