@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:miscelaneos/presentations/providers/app_state_provider.dart';
+
 import 'config/config.dart';
 
+
+
 void main() {
-  runApp(const MainApp());
+  runApp(const ProviderScope(child: MainApp()));
 }
 
-class MainApp extends StatefulWidget {
+class MainApp extends ConsumerStatefulWidget {
   const MainApp({super.key});
 
   @override
-  State<MainApp> createState() => _MainAppState();
+  MainAppState createState() => MainAppState();
 }
 
-class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
+class MainAppState extends ConsumerState<MainApp> with WidgetsBindingObserver {
 
   @override
   void initState() {
@@ -31,7 +36,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    print('State: $state');
+    ref.read(appStateProvider.notifier).state = state;
     super.didChangeAppLifecycleState(state);
   }
 
