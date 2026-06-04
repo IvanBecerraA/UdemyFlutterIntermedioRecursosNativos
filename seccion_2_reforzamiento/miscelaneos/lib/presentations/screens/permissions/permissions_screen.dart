@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:miscelaneos/presentations/providers/providers.dart';
 
 
 
@@ -23,15 +24,17 @@ class _PermissionsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
 
+    final permissions = ref.watch(permissionsProvider);
+
     return ListView(
       children: [
         
         CheckboxListTile(
-          value: true, 
+          value: permissions.cameraGranted, 
           title: const Text('Cámara'),
-          subtitle: const Text('Estado actual'),
-          onChanged: (value) {
-
+          subtitle: Text('${permissions.camera}'),
+          onChanged: (_) {
+            ref.read(permissionsProvider.notifier).requestCameraAccess();
           }),
       ],
     );

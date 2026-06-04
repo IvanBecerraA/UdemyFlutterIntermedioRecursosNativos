@@ -3,6 +3,12 @@ import 'package:permission_handler/permission_handler.dart';
 
 
 
+final permissionsProvider = StateNotifierProvider<PermissionsNotifier, PermissionsState>((ref) {
+  return PermissionsNotifier();
+});
+
+
+
 class PermissionsNotifier extends StateNotifier<PermissionsState> {
 
   PermissionsNotifier(): super(PermissionsState()) {
@@ -40,11 +46,6 @@ class PermissionsNotifier extends StateNotifier<PermissionsState> {
   }
 
 }
-
-
-
-
-
 
 
 
