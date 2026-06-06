@@ -10,12 +10,22 @@ class GyroscopeXYZ {
   final double z;
 
   GyroscopeXYZ(this.x, this.y, this.z);  
+
+  @override
+  String toString() {
+    // TODO: implement toString
+    return '''
+x:$x
+y:$y
+z:$z
+    ''';
+  }
 }
 
 
 
 
-final gyroscopreProvider = StreamProvider<GyroscopeXYZ>((ref) async* {
+final gyroscopreProvider = StreamProvider.autoDispose<GyroscopeXYZ>((ref) async* {
   
   await for (final event in gyroscopeEvents) {
     
