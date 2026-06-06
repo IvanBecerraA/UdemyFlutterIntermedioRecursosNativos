@@ -1,2 +1,8 @@
 export 'home/home_screen.dart';
 export 'permissions/permissions_screen.dart';
+
+export 'sensors/accelerometer_screen.dart';
+export 'sensors/compass_screen.dart';
+export 'sensors/gyroscope_ball_screeen.dart';
+export 'sensors/gyroscope_screeen.dart';
+export 'sensors/magnetometer_screeen.dart';

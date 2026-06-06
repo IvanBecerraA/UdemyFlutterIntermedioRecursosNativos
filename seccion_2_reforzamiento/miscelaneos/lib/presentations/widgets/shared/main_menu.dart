@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 
 
@@ -13,10 +14,10 @@ class MenuItem {
 final menuItems = <MenuItem>[
   MenuItem('Giróscopio', Icons.downloading, '/gyroscope'),
   MenuItem('Acelerómetro', Icons.speed, '/accelerometer'),
-  MenuItem('Magnetrometro', Icons.explore_outlined, '/magnetrometer'),
+  MenuItem('Magnetometro', Icons.explore_outlined, '/magnetometer'),
 
-  MenuItem('Brújula', Icons.sports_baseball_outlined, '/compass'),
-  MenuItem('Giróscopio Ball', Icons.explore, '/compass'),
+  MenuItem('Giróscopio Ball', Icons.sports_baseball_outlined, '/gyroscope-ball'),
+  MenuItem('Brújula', Icons.explore, '/compass'),
 ];
 
 
@@ -32,8 +33,8 @@ class MainMenu extends StatelessWidget {
       mainAxisSpacing: 10,
       children: menuItems.map((item) => HomeMenuItem(
         title: item.title, 
+        route: item.route,
         icon: item.icon, 
-        route: item.route
       )).toList()
     );
   }
@@ -43,22 +44,42 @@ class MainMenu extends StatelessWidget {
 class HomeMenuItem extends StatelessWidget {
 
   final String title;
-  final IconData icon;
   final String route;
+  final IconData icon;
   final List<Color> bgColors;
 
   const HomeMenuItem({
     super.key,
     required this.title,
-    required this.icon,
     required this.route,
+    required this.icon,
     this.bgColors = const [Colors.lightBlue, Colors.blue]
   });
 
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: bgColors[0],
+    return GestureDetector(
+      onTap: () => context.push(route),
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          gradient: LinearGradient(
+            colors: bgColors,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          )
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: Colors.white, size: 40,),
+            const SizedBox(height: 10,),
+            Text(title, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white, fontSize: 10),)
+          ],
+        ),
+      ),
     );
   }
 }
