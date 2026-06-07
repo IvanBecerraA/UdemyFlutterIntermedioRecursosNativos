@@ -1,5 +1,5 @@
 import 'package:miscelaneos/domain/domain.dart';
-import 'package:miscelaneos/domain/infraestructure/models/pokeapi_pokemon_response.dart';
+import 'package:miscelaneos/infraestructure/models/pokeapi_pokemon_response.dart';
 
 
 

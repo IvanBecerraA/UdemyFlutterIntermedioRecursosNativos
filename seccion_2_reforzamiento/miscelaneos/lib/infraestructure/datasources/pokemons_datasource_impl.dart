@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:miscelaneos/domain/domain.dart';
-import 'package:miscelaneos/domain/infraestructure/mappers/pokemon_mapper.dart';
+import 'package:miscelaneos/infraestructure/mappers/pokemon_mapper.dart';
 
 
 
