@@ -1,17 +1,70 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:miscelaneos/presentations/providers/sensors/gyroscope_provider.dart';
 
 
-class GyroscopreBallScreen extends StatelessWidget {
+class GyroscopreBallScreen extends ConsumerWidget {
   const GyroscopreBallScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+
+    final gyroscope$ = ref.watch(gyroscopreProvider);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('GyroscopreBallScreen'),
+        title: const Text('Giroscópio'),
       ),
-      body: const Center(
-        child: Text('Hola'),
+      body: SizedBox.expand(
+        child: gyroscope$.when(
+          data: (value) => MovingBall(x: value.x, y: value.y), 
+          error: (error, stackTrace) => Text('$error'), 
+          loading: () => const CircularProgressIndicator()
+        )
+      ),
+    );
+  }
+}
+
+
+class MovingBall extends StatelessWidget {
+
+  final double x;
+  final double y;
+
+  const MovingBall({super.key, required this.x, required this.y});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        const Ball(),
+
+        Text(
+          '''
+    X: $x,
+    Y: $y
+''', 
+          style: const TextStyle(fontSize: 30),
+        ),
+      ],
+    );
+  }
+}
+
+
+class Ball extends StatelessWidget {
+  const Ball({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 50,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(100)
       ),
     );
   }
