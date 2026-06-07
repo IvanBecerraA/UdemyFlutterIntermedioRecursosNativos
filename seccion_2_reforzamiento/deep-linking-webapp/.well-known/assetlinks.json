@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.ivanbecerra.miscelaneos",
+    "sha256_cert_fingerprints":
+    ["80:71:33:1D:94:18:13:FC:5A:8B:84:85:15:D8:86:56:21:6D:38:B8:A3:6E:CD:D0:44:B6:69:67:4A:79:54:50"]
+  }
+}]
