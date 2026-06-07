@@ -18,6 +18,8 @@ final menuItems = <MenuItem>[
 
   MenuItem('Giróscopio Ball', Icons.sports_baseball_outlined, '/gyroscope-ball'),
   MenuItem('Brújula', Icons.explore, '/compass'),
+
+  MenuItem('Pokemons', Icons.explore, '/pokemons'),
 ];
 
 

@@ -8,3 +8,5 @@ export 'sensors/compass_screen.dart';
 export 'sensors/gyroscope_ball_screeen.dart';
 export 'sensors/gyroscope_screeen.dart';
 export 'sensors/magnetometer_screeen.dart';
+
+export 'pokemons/pomemons_screen.dart';
