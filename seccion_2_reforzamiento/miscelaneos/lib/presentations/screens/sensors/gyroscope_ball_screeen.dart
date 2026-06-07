@@ -36,10 +36,26 @@ class MovingBall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final size = MediaQuery.of(context).size;
+    double screenWidth = size.width;
+    double screenHeight = size.height;
+
+    double currentYPos = ( y * 400);
+    double currentXPos = ( x * 600);
+
+
     return Stack(
       alignment: Alignment.center,
       children: [
-        const Ball(),
+
+        AnimatedPositioned(
+          left: currentYPos -25 + (screenWidth / 2),
+          top: currentXPos -100 + (screenHeight / 2),
+          curve: Curves.easeInOut,
+          child: const Ball(), 
+          duration: const Duration(milliseconds: 1000)
+        ),
 
         Text(
           '''
