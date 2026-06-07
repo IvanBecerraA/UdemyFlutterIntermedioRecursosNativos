@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:miscelaneos/presentations/providers/providers.dart';
 
 
-class PokemonScreen extends StatelessWidget {
-  const PokemonScreen({super.key});
+class PokemonsScreen extends StatelessWidget {
+  const PokemonsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class PokemonsViewState extends ConsumerState<PokemonsView> {
   void infinitScroll() {
     final currentPokemons = ref.read(pokemonIdsProvider);
 
-    if (currentPokemons.length > 1023) {
+    if (currentPokemons.length > 994) {
       scrollController.removeListener(infinitScroll);
       return;
     }
@@ -89,10 +90,7 @@ class _PokemonGrid extends ConsumerWidget {
       itemCount: pokemonIds.length,
       itemBuilder: (context, index) {
         return GestureDetector(
-          // TODO:
-          onTap: () => {
-
-          },
+          onTap: () => context.push('/pokemons/${index + 1}'),
           child: Image.network(
             'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png',
             fit: BoxFit.contain,
