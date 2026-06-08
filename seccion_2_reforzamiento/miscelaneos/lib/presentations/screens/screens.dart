@@ -9,7 +9,14 @@ export 'sensors/gyroscope_ball_screeen.dart';
 export 'sensors/gyroscope_screeen.dart';
 export 'sensors/magnetometer_screeen.dart';
 
+// Pokemons
 export 'pokemons/pokemons_screen.dart';
 export 'pokemons/pokemon_screen.dart';
 
+// Biometricos
 export 'biometrics/biometric_screen.dart';
+
+// Ubicación y Mapas
+export 'locations/controlled_map_screen.dart';
+export 'locations/location_screen.dart';
+export 'locations/map_screen.dart';
