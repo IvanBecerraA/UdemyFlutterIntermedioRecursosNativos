@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:miscelaneos/presentations/providers/locations/user_location_provider.dart';
+import 'package:miscelaneos/presentations/providers/providers.dart';
 
 
 
@@ -11,6 +11,7 @@ class LocationScreen extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
 
     final userLocationAsync = ref.watch(userLocationProvider);
+    final watchLocationAsync = ref.watch(watchLocationProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -31,6 +32,11 @@ class LocationScreen extends ConsumerWidget {
             const SizedBox(height: 30,),
             // ! Current location
             const Text('Seguimiento de Ubicación'),
+            watchLocationAsync.when(
+              data: (data) => Text('$data'), 
+              error: (error, stackTrace) => Text('$error'), 
+              loading: () => CircularProgressIndicator()
+            ),
 
           ],
         ),
