@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:miscelaneos/presentations/providers/badge/badge_counter_provider.dart';
+import 'package:miscelaneos/config/config.dart';
+import 'package:miscelaneos/presentations/providers/providers.dart';
 
 
 
@@ -30,6 +31,7 @@ class BadgeScreen extends ConsumerWidget {
             FilledButton.tonal(
               onPressed: () {
                 ref.invalidate(badgeCounterProvider);
+                // AppBadgePlugin.removeBadge();
               }, 
               child: const Text('Borrar Badge')
             ),
@@ -41,6 +43,7 @@ class BadgeScreen extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           ref.read(badgeCounterProvider.notifier).update((state) => state + 1);
+          // AppBadgePlugin.updateBadgeCount(badgeCounter + 1);
         },
         child: Icon(Icons.plus_one),
       ),
