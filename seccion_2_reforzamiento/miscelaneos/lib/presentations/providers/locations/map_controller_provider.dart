@@ -40,8 +40,13 @@ class MapState {
 class MapNotifier extends StateNotifier<MapState> {
 
   StreamSubscription? userLocation$;
+  (double, double)? lastKnownLocation;
 
-  MapNotifier(): super(MapState());
+  MapNotifier(): super(MapState()) {
+    trackUser().listen((event) {
+      lastKnownLocation = (event.$1, event.$2);
+    });
+  }
 
   Stream<(double, double)> trackUser() async* {
     await for(final pos in Geolocator.getPositionStream()) {
@@ -70,6 +75,8 @@ class MapNotifier extends StateNotifier<MapState> {
     state = state.copyWith(followUser: !state.followUser);
 
     if (state.followUser) {
+      findUser();
+      
       userLocation$ = trackUser().listen((event) {
         goToLocation(event.$1, event.$2);
       });
@@ -79,9 +86,13 @@ class MapNotifier extends StateNotifier<MapState> {
   }
 
   findUser() {
-    trackUser().take(1).listen((event) {
-      goToLocation(event.$1, event.$2);
-    });
+    if (lastKnownLocation == null) return;
+    final (latitude, longitude) = lastKnownLocation!;
+    goToLocation(latitude, longitude);
+    
+    // trackUser().take(1).listen((event) {
+    //   goToLocation(event.$1, event.$2);
+    // });
   }
 
 }
