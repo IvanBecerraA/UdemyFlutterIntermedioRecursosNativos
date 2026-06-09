@@ -33,7 +33,7 @@ class _PokemonView extends StatelessWidget {
 
   final Pokemon pokemon;
 
-  const _PokemonView({super.key, required this.pokemon});
+  const _PokemonView({required this.pokemon});
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class _ErrorWidget extends StatelessWidget {
 
   final String message;
 
-  const _ErrorWidget({super.key, required this.message});
+  const _ErrorWidget({required this.message});
 
   @override
   Widget build(BuildContext context) {

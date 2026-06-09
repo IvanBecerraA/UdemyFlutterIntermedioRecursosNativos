@@ -25,7 +25,7 @@ class ControlledMapScreen extends ConsumerWidget {
 }
 
 
-class MapAndControls extends StatelessWidget {
+class MapAndControls extends ConsumerWidget {
 
   final double latitude;
   final double longitude;
@@ -33,7 +33,7 @@ class MapAndControls extends StatelessWidget {
   const MapAndControls({super.key, required this.latitude, required this.longitude});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return Stack(
       children: [
         
@@ -57,7 +57,8 @@ class MapAndControls extends StatelessWidget {
           left: 20,
           child: IconButton.filled(
             onPressed: () {
-              
+              ref.read(mapControllerProvider.notifier)
+                 .goToLocation(latitude, longitude);
             }, 
             icon: const Icon(Icons.location_searching)
           )
@@ -93,7 +94,7 @@ class MapAndControls extends StatelessWidget {
 }
 
 
-class _MapView extends StatefulWidget {
+class _MapView extends ConsumerStatefulWidget {
 
   final double initialLat;
   final double initialLng;
@@ -101,10 +102,10 @@ class _MapView extends StatefulWidget {
   const _MapView({required this.initialLat, required this.initialLng});
 
   @override
-  State<_MapView> createState() => __MapViewState();
+  __MapViewState createState() => __MapViewState();
 }
 
-class __MapViewState extends State<_MapView> {
+class __MapViewState extends ConsumerState<_MapView> {
 
 
 
@@ -120,6 +121,8 @@ class __MapViewState extends State<_MapView> {
         myLocationButtonEnabled: false,
         onMapCreated: (GoogleMapController controller) {
           // _controller.complete(controller);
+          ref.read(mapControllerProvider.notifier)
+             .setMapController(controller);
         },
       );
   }

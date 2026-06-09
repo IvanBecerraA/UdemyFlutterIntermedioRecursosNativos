@@ -34,7 +34,7 @@ class PermissionsNotifier extends StateNotifier<PermissionsState> {
     );
   }
 
-  openSettingsScreen() {
+  void openSettingsScreen() {
     openAppSettings();
   }
 
@@ -44,28 +44,28 @@ class PermissionsNotifier extends StateNotifier<PermissionsState> {
     }
   }
   
-  requestCameraAccess() async {
+  Future<void> requestCameraAccess() async {
     final status = await Permission.camera.request();
     state = state.copyWith(camera: status);
 
     _checkPermissionsState(status);
   }
 
-  requestPhotosLibraryAccess() async {
+  Future<void> requestPhotosLibraryAccess() async {
     final status = await Permission.photos.request();
     state = state.copyWith(photoLibrary: status);
 
     _checkPermissionsState(status);
   }
 
-  requestLocationsAccess() async {
+  Future<void> requestLocationsAccess() async {
     final status = await Permission.location.request();
     state = state.copyWith(location: status);
 
     _checkPermissionsState(status);
   }
 
-  requestSensorsAlwaysAccess() async {
+  Future<void> requestSensorsAlwaysAccess() async {
     final status = await Permission.sensors.request();
     state = state.copyWith(sensors: status);
 
@@ -94,27 +94,27 @@ class PermissionsState {
     this.locationWhenInUse  = PermissionStatus.denied,
   });
 
-  get cameraGranted {
+  bool get cameraGranted {
     return camera == PermissionStatus.granted;
   }
 
-  get photoLibraryGranted {
+  bool get photoLibraryGranted {
     return photoLibrary == PermissionStatus.granted;
   }
 
-  get sensorsGranted {
+  bool get sensorsGranted {
     return sensors == PermissionStatus.granted;
   }
 
-  get locationGranted {
+  bool get locationGranted {
     return location == PermissionStatus.granted;
   }
 
-  get locationAlwaysGranted {
+  bool get locationAlwaysGranted {
     return locationAlways == PermissionStatus.granted;
   }
 
-  get locationWhenInUseGranted {
+  bool get locationWhenInUseGranted {
     return locationWhenInUse == PermissionStatus.granted;
   }
 

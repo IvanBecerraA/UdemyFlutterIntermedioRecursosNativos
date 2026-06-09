@@ -8,7 +8,7 @@ class LocalAuthPlugin {
 
   static final LocalAuthentication auth = LocalAuthentication();
 
-  static availableBiometrics() async {
+  static Future<void> availableBiometrics() async {
 
     final List<BiometricType> availableBiometrics = await auth.getAvailableBiometrics();
 

@@ -19,3 +19,4 @@ export 'local_auth/local_auth_providers.dart';
 // ! Location
 export 'locations/user_location_provider.dart';
 export 'locations/watch_location_provider.dart';
+export 'locations/map_controller_provider.dart';

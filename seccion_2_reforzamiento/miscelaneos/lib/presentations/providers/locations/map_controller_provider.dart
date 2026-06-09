@@ -42,7 +42,18 @@ class MapNotifier extends StateNotifier<MapState> {
     state = state.copyWith(controller: controller, isReady: true);
   }
 
-  goToLocation(){
-    
+  void goToLocation(double latitude, double longitude){
+
+    final newPosition = CameraPosition(
+      target: LatLng(latitude, longitude),
+      zoom: 15,
+    );
+
+    state.controller?.animateCamera(CameraUpdate.newCameraPosition(newPosition));
   }
 }
+
+
+final mapControllerProvider = StateNotifierProvider<MapNotifier, MapState>((ref) {
+  return MapNotifier();
+});

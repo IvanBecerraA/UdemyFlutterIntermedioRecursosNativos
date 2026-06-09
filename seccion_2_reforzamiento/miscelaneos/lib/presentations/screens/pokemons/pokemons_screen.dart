@@ -74,7 +74,7 @@ class PokemonsViewState extends ConsumerState<PokemonsView> {
 }
 
 class _PokemonGrid extends ConsumerWidget {
-  const _PokemonGrid({super.key});
+  const _PokemonGrid();
 
   @override
   Widget build(BuildContext context, ref) {
