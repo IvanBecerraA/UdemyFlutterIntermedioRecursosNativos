@@ -79,7 +79,9 @@ class MapNotifier extends StateNotifier<MapState> {
   }
 
   findUser() {
-    
+    trackUser().take(1).listen((event) {
+      goToLocation(event.$1, event.$2);
+    });
   }
 
 }
