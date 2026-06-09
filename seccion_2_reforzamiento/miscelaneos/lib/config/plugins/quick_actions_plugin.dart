@@ -1,4 +1,5 @@
 import 'package:quick_actions/quick_actions.dart';
+import 'package:miscelaneos/config/config.dart';
 
 
 
@@ -9,20 +10,20 @@ class QuickActionsPlugin {
 
     quickActions.initialize((shortcutType) {
 
-      print(shortcutType);
+      print('shortcutType:  $shortcutType');
       
       switch (shortcutType) {
         case 'biometric':
-
+          router.push('/biometrics');
         break;
         case 'compass':
-
+          router.push('/compass');
         break;
         case 'pokemons':
-
+          router.push('/pokemons');
         break;
         case 'charmander':
-
+          router.push('/pokemons/4');
         break;
       }
       // More handling code...
@@ -30,10 +31,10 @@ class QuickActionsPlugin {
 
 
     quickActions.setShortcutItems(<ShortcutItem>[
-      const ShortcutItem(type: 'biometric', localizedTitle: 'Biometric', icon: 'icon_main'),
-      const ShortcutItem(type: 'compass', localizedTitle: 'Compass', icon: 'icon_main'),
-      const ShortcutItem(type: 'pokemons', localizedTitle: 'Pokemons', icon: 'icon_main'),
-      const ShortcutItem(type: 'charmander', localizedTitle: 'Charmander', icon: 'icon_main'),
+      const ShortcutItem(type: 'biometric', localizedTitle: 'Biometric', icon: 'finger'),
+      const ShortcutItem(type: 'compass', localizedTitle: 'Compass', icon: 'compass'),
+      const ShortcutItem(type: 'pokemons', localizedTitle: 'Pokemons', icon: 'pokemons'),
+      const ShortcutItem(type: 'charmander', localizedTitle: 'Charmander', icon: 'charmander'),
     ]);
   }
 
